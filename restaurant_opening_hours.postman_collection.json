@@ -1,0 +1,300 @@
+{
+	"info": {
+		"_postman_id": "605f8944-7950-49ca-8b2d-b8bca2e8b0b6",
+		"name": "restaurant",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"monday\": [],\n    \"tuesday\": [\n        {\n            \"type\": \"open\",\n            \"value\": 36000\n        },\n        {\n            \"type\": \"close\",\n            \"value\": 64800\n        }\n    ],\n    \"wednesday\": [],\n    \"thursday\": [\n        {\n            \"type\": \"open\",\n            \"value\": 37800\n        },\n        {\n            \"type\": \"close\",\n            \"value\": 64800\n        }\n    ],\n    \"friday\": [\n        {\n            \"type\": \"open\",\n            \"value\": 36000\n        }\n    ],\n    \"saturday\": [\n        {\n            \"type\": \"close\",\n            \"value\": 3600\n        },\n        {\n            \"type\": \"open\",\n            \"value\": 36000\n        }\n    ],\n    \"sunday\": [\n        {\n            \"type\": \"close\",\n            \"value\": 3600\n        },\n        {\n            \"type\": \"open\",\n            \"value\": 43200\n        },\n        {\n            \"type\": \"close\",\n            \"value\": 75600\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/opening-hours",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"opening-hours"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "More than two opening/closing periods within the same day.",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"monday\": [\n     {\n         \"type\": \"open\",\n         \"value\": 32400\n     },\n     {\n         \"type\": \"close\",\n         \"value\": 36000\n     },\n     {\n         \"type\": \"open\",\n         \"value\": 39600\n     },\n     {\n         \"type\": \"close\",\n         \"value\": 43200\n     },\n     {\n         \"type\": \"open\",\n         \"value\": 46800\n     },\n     {\n         \"type\": \"close\",\n         \"value\": 50400\n     }\n ],\n    \"tuesday\": [\n        {\n            \"type\": \"open\",\n            \"value\": 36000\n        },\n        {\n            \"type\": \"close\",\n            \"value\": 64800\n        }\n    ],\n    \"wednesday\": [],\n    \"thursday\": [\n        {\n            \"type\": \"open\",\n            \"value\": 37800\n        },\n        {\n            \"type\": \"close\",\n            \"value\": 64800\n        }\n    ],\n    \"friday\": [\n        {\n            \"type\": \"open\",\n            \"value\": 36000\n        }\n    ],\n    \"saturday\": [\n        {\n            \"type\": \"close\",\n            \"value\": 3600\n        },\n        {\n            \"type\": \"open\",\n            \"value\": 36000\n        }\n    ],\n    \"sunday\": [\n        {\n            \"type\": \"close\",\n            \"value\": 3600\n        },\n        {\n            \"type\": \"open\",\n            \"value\": 43200\n        },\n        {\n            \"type\": \"close\",\n            \"value\": 75600\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/opening-hours",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"opening-hours"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Missing 'type' key",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n     \"monday\": [],\n    \"tuesday\": [\n        {\n            \"value\": 36000\n        },\n        {\n            \"type\": \"close\",\n            \"value\": 64800\n        }\n    ],\n    \"wednesday\": [],\n    \"thursday\": [\n        {\n            \"type\": \"open\",\n            \"value\": 37800\n        },\n        {\n            \"type\": \"close\",\n            \"value\": 64800\n        }\n    ],\n    \"friday\": [\n        {\n            \"type\": \"open\",\n            \"value\": 64800\n        }\n    ],\n    \"saturday\": [\n        {\n            \"type\": \"close\",\n            \"value\": 3600\n        },\n        {\n            \"type\": \"open\",\n            \"value\": 32400\n        },\n        {\n            \"type\": \"close\",\n            \"value\": 39600\n        },\n        {\n            \"type\": \"open\",\n            \"value\": 57600\n        },\n        {\n            \"type\": \"close\",\n            \"value\": 82800\n        }\n    ],\n    \"sunday\": [\n        {\n            \"type\": \"open\",\n            \"value\": 43200\n        },\n        {\n            \"type\": \"close\",\n            \"value\": 75600\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/opening-hours",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"opening-hours"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Missing 'value' key",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n     \"monday\": [],\n    \"tuesday\": [\n        {\n            \"type\": \"open\"\n        },\n        {\n            \"type\": \"close\",\n            \"value\": 64800\n        }\n    ],\n    \"wednesday\": [],\n    \"thursday\": [\n        {\n            \"type\": \"open\",\n            \"value\": 37800\n        },\n        {\n            \"type\": \"close\",\n            \"value\": 64800\n        }\n    ],\n    \"friday\": [\n        {\n            \"type\": \"open\",\n            \"value\": 64800\n        }\n    ],\n    \"saturday\": [\n        {\n            \"type\": \"close\",\n            \"value\": 3600\n        },\n        {\n            \"type\": \"open\",\n            \"value\": 32400\n        },\n        {\n            \"type\": \"close\",\n            \"value\": 39600\n        },\n        {\n            \"type\": \"open\",\n            \"value\": 57600\n        },\n        {\n            \"type\": \"close\",\n            \"value\": 82800\n        }\n    ],\n    \"sunday\": [\n        {\n            \"type\": \"open\",\n            \"value\": 43200\n        },\n        {\n            \"type\": \"close\",\n            \"value\": 75600\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/opening-hours",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"opening-hours"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Invalid 'type' key value",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"monday\": [],\n    \"tuesday\": [\n        {\n            \"type\": \"begin\",\n            \"value\": 36000\n        },\n        {\n            \"type\": \"close\",\n            \"value\": 64800\n        }\n    ],\n    \"wednesday\": [],\n    \"thursday\": [\n        {\n            \"type\": \"open\",\n            \"value\": 37800\n        },\n        {\n            \"type\": \"close\",\n            \"value\": 64800\n        }\n    ],\n    \"friday\": [\n        {\n            \"type\": \"open\",\n            \"value\": 36000\n        }\n    ],\n    \"saturday\": [\n        {\n            \"type\": \"close\",\n            \"value\": 3600\n        },\n        {\n            \"type\": \"open\",\n            \"value\": 36000\n        }\n    ],\n    \"sunday\": [\n        {\n            \"type\": \"close\",\n            \"value\": 3600\n        },\n        {\n            \"type\": \"open\",\n            \"value\": 43200\n        },\n        {\n            \"type\": \"close\",\n            \"value\": 75600\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/opening-hours/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"opening-hours",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Opening time greater than closing time within the same day",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"monday\": [],\n    \"tuesday\": [\n        {\n            \"type\": \"open\",\n            \"value\": 36000\n        },\n        {\n            \"type\": \"close\",\n            \"value\": 64800\n        }\n    ],\n    \"wednesday\": [],\n    \"thursday\": [\n        {\n            \"type\": \"open\",\n            \"value\": 37800\n        },\n        {\n            \"type\": \"close\",\n            \"value\": 64800\n        }\n    ],\n  \"friday\": [\n     {\n         \"type\": \"open\",\n         \"value\": 64800\n     },\n     {\n         \"type\": \"close\",\n         \"value\": 32400\n     }\n ],\n    \"saturday\": [\n        {\n            \"type\": \"open\",\n            \"value\": 3600\n        },\n        {\n            \"type\": \"close\",\n            \"value\": 36000\n        }\n    ],\n    \"sunday\": [\n        {\n            \"type\": \"open\",\n            \"value\": 3600\n        },\n        {\n            \"type\": \"close\",\n            \"value\": 43200\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/opening-hours",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"opening-hours"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Invalid day of the week.",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n     \"funday\": [],\n    \"tuesday\": [\n        {\n            \"type\": \"open\",\n            \"value\": 36000\n        },\n        {\n            \"type\": \"close\",\n            \"value\": 64800\n        }\n    ],\n    \"wednesday\": [],\n    \"thursday\": [\n        {\n            \"type\": \"open\",\n            \"value\": 37800\n        },\n        {\n            \"type\": \"close\",\n            \"value\": 64800\n        }\n    ],\n    \"friday\": [\n        {\n            \"type\": \"open\",\n            \"value\": 64800\n        }\n    ],\n    \"saturday\": [\n     {\n         \"type\": \"open\",\n         \"value\": 90000\n     },\n     {\n         \"type\": \"close\",\n         \"value\": 64800\n     }\n ],\n    \"sunday\": [\n        {\n            \"type\": \"open\",\n            \"value\": 43200\n        },\n        {\n            \"type\": \"close\",\n            \"value\": 75600\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/opening-hours",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"opening-hours"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Invalid UNIX timestamp",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n     \"monday\": [],\n    \"tuesday\": [\n        {\n            \"type\": \"open\",\n            \"value\": 36000\n        },\n        {\n            \"type\": \"close\",\n            \"value\": 64800\n        }\n    ],\n    \"wednesday\": [],\n    \"thursday\": [\n        {\n            \"type\": \"open\",\n            \"value\": 37800\n        },\n        {\n            \"type\": \"close\",\n            \"value\": 64800\n        }\n    ],\n    \"friday\": [\n        {\n            \"type\": \"open\",\n            \"value\": 64800\n        }\n    ],\n    \"saturday\": [\n     {\n         \"type\": \"open\",\n         \"value\": 90000\n     },\n     {\n         \"type\": \"close\",\n         \"value\": 64800\n     }\n ],\n    \"sunday\": [\n        {\n            \"type\": \"open\",\n            \"value\": 43200\n        },\n        {\n            \"type\": \"close\",\n            \"value\": 75600\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/opening-hours",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"opening-hours"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Closing Time Before Opening Time within the same day",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n     \"monday\": [],\n    \"tuesday\": [\n     {\n         \"type\": \"open\",\n         \"value\": 64800\n     },\n     {\n         \"type\": \"close\",\n         \"value\": 3600\n     }\n ],\n    \"wednesday\": [],\n    \"thursday\": [\n        {\n            \"type\": \"open\",\n            \"value\": 37800\n        },\n        {\n            \"type\": \"close\",\n            \"value\": 64800\n        }\n    ],\n    \"friday\": [\n        {\n            \"type\": \"open\",\n            \"value\": 64800\n        }\n    ],\n    \"saturday\": [\n        {\n            \"type\": \"close\",\n            \"value\": 3600\n        },\n        {\n            \"type\": \"open\",\n            \"value\": 32400\n        },\n        {\n            \"type\": \"close\",\n            \"value\": 39600\n        },\n        {\n            \"type\": \"open\",\n            \"value\": 57600\n        },\n        {\n            \"type\": \"close\",\n            \"value\": 82800\n        }\n    ],\n    \"sunday\": [\n        {\n            \"type\": \"open\",\n            \"value\": 43200\n        },\n        {\n            \"type\": \"close\",\n            \"value\": 75600\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/opening-hours",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"opening-hours"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Two Opening Times without a Closing Time",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n     \"monday\": [],\n    \"tuesday\": [\n     {\n         \"type\": \"open\",\n         \"value\": 3600\n     },\n     {\n         \"type\": \"close\",\n         \"value\": 64800\n     }\n ],\n    \"wednesday\": [],\n    \"thursday\": [\n        {\n            \"type\": \"open\",\n            \"value\": 37800\n        },\n        {\n            \"type\": \"close\",\n            \"value\": 64800\n        }\n    ],\n    \"friday\": [\n        {\n            \"type\": \"open\",\n            \"value\": 64800\n        }\n    ],\n    \"saturday\": [\n        {\n            \"type\": \"close\",\n            \"value\": 3600\n        },\n        {\n            \"type\": \"open\",\n            \"value\": 32400\n        },\n        {\n            \"type\": \"close\",\n            \"value\": 39600\n        },\n        {\n            \"type\": \"open\",\n            \"value\": 57600\n        },\n        {\n            \"type\": \"close\",\n            \"value\": 82800\n        }\n    ],\n   \"sunday\": [\n     {\n         \"type\": \"open\",\n         \"value\": 32400\n     },\n     {\n         \"type\": \"open\",\n         \"value\": 57600\n     },\n     {\n         \"type\": \"close\",\n         \"value\": 64800\n     }\n ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/opening-hours",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"opening-hours"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
